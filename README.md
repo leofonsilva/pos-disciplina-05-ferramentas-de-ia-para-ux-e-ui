@@ -57,3 +57,68 @@ npx @angular/cli@21 new pix-app sstyles css --rounting true
 npm ci
 npm start
 ```
+
+### Módulo 03: Orquestração de Agentes Locais e Nuvem
+
+#### **Projeto:** [Cpf Platform](module-03)
+
+**Tecnologias utilizadas:**
+- **Nx 22** - Monorepo toolchain para orquestração de múltiplos aplicativos e bibliotecas
+- **Angular 21** - Frontend framework para a aplicação web
+- **NestJS** - Framework backend Node.js para APIs
+- **Jules (Google)** - Agente de IA na nuvem para automação e orquestração
+- **TypeScript** - Linguagem tipada para todo o stack
+- **Docker** (opcional) - Contêineres para ambiente de desenvolvimento e implantação
+
+**Conceitos abordados:**
+- Orquestração de agentes locais (Nx) e agentes na nuvem (Jules)
+- Arquitetura de monorepo com Nx e integração de aplicações Angular + Nest
+- Estratégias de comunicação entre agentes via APIs e mensagens
+- Uso de ferramentas de IA para geração de código e automação de pipelines
+- Gestão de memória e reflexão de agentes (memória persistente, lições aprendidas)
+
+**Aplicação prática:**
+- Plataforma CPF (Cadastro de Pessoas Físicas) que combina frontend Angular e backend NestJS
+- Integração de agentes locais para geração de código, testes e deploy automatizados
+- Agente Jules na nuvem para monitoramento, diagnóstico e respostas a incidentes
+- Estrutura de memória/reflexão para capturar lições de execuções e melhorar o fluxo
+
+**Comandos executados**:
+```bash
+npm install -g nx@latest
+npx create-nx-workspace@latest module-03 --preset=apps --nxCloud=skip
+  - Selecionar improve Nx: Yes
+npm install -D @nxqangular @nx/nest @nx/js
+nx g @nxqangular:application frontend --routing=true --style=css --standalone=true --strict
+  - Selecionar unit test runner: vitest-angular
+  - Selecioanar E2E test runner: playwright
+  - Selecionar nuild: esbuild
+  - Selecionar SSR: false
+nx g @nx/nest:apllication api --frontendProject=frontend --strict
+  - Selecionar linter: eslint
+  - Selecionar unit test runner: jest
+nx g @nx/js:library shared-types --buildable
+  - Selecionar bundler to build library: esbuild
+  - Selecionar unit test runner: jest
+nx run-many -t serve -p api frontend
+npx nx migrate latest
+
+npm install -g @fission-ai/openspec@latest
+openspec init --tools github-copilot 
+  - Ou qualquer outro antigravity, auggie, bob, claude, ...
+
+git worktree add ../worktreees/cfp-api -b ai/feat-cfp-api
+git worktree add ../worktreees/cfp-api -b ai/feat-cfp-ui
+
+git checkout -b chore/integrate-cfp-feature
+git merge ai/feat-cfp-api --no-ff -m "chore(api): merge cfp backend"
+git merge ai/feat-cfp-ui --no-ff -m "chore(api): merge cfp frontend"
+git merge chore/integrate-cfp-feature --no-ff -m "feat(system): add integrated cpf dashboard with consistent ui"
+git worktree remove ../worktrees/cfp-api
+git worktree remove ../worktrees/cfp-ui
+git branch -d ai/feat-cfp-api ai/feat-cfp-ui
+
+git fetch origin
+git checkout featqevent-registration-134234324234414331
+nx run-many -t serve -p api frontend
+```
