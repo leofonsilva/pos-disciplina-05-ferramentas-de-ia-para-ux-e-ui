@@ -60,7 +60,7 @@ npm start
 
 ### Módulo 03: Orquestração de Agentes Locais e Nuvem
 
-#### **Projeto:** [Cpf Platform](module-03)
+#### **Projeto:** [Cfp Platform](module-03)
 
 **Tecnologias utilizadas:**
 - **Nx 22** - Monorepo toolchain para orquestração de múltiplos aplicativos e bibliotecas
@@ -78,7 +78,7 @@ npm start
 - Gestão de memória e reflexão de agentes (memória persistente, lições aprendidas)
 
 **Aplicação prática:**
-- Plataforma CPF (Cadastro de Pessoas Físicas) que combina frontend Angular e backend NestJS
+- Plataforma CFP que combina frontend Angular e backend NestJS
 - Integração de agentes locais para geração de código, testes e deploy automatizados
 - Agente Jules na nuvem para monitoramento, diagnóstico e respostas a incidentes
 - Estrutura de memória/reflexão para capturar lições de execuções e melhorar o fluxo
@@ -121,4 +121,37 @@ git branch -d ai/feat-cfp-api ai/feat-cfp-ui
 git fetch origin
 git checkout featqevent-registration-134234324234414331
 nx run-many -t serve -p api frontend
+```
+
+### Módulo 04: Automação E2E e QA AI-Native
+
+#### **Projeto:** [Cfp Platform V2](module-04)
+
+**Tecnologias utilizadas:**
+- **Cypress IA** - Framework de testes E2E com IA para geração automática de testes a partir de prompts
+- **Playwright** - Framework de automação de navegadores para testes E2E
+- **Nx 22** - Monorepo para orquestração de aplicações e bibliotecas
+- **Angular 21** - Framework frontend para a aplicação web
+- **TypeScript** - Linguagem tipada para desenvolvimento robusto
+
+**Conceitos abordados:**
+- Automação E2E com IA (Cypress IA) para geração de testes a partir de prompts
+- Implementação de testes de qualidade com Playwright
+- Integração de IA no ciclo de QA e garantia de qualidade
+- Orquestração de testes em monorepo com Nx
+- Testes automatizados com suporte de IA para geração e manutenção
+
+**Aplicação prática:**
+- Plataforma CFP V2 com automação E2E e QA AI-Native
+- Geração automática de testes E2E usando Cypress IA a partir de prompts
+- Implementação de testes de regressão e funcional com Playwright
+- Integração de testes no ciclo de CI/CD com Nx
+- Validação de fluxos de usuário e funcionalidades críticas com suporte de IA
+
+**Comandos executados**:
+```bash
+nx add/@nx/cypress
+nx run-many -t serve -p api frontend
+npx nx e2e frontend-e2e
+nx open-cypress frontend-e2e
 ```
