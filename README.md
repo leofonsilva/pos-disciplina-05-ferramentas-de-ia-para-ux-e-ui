@@ -1,7 +1,9 @@
 # Pós Disciplina 05 - Ferramentas de IA para UX e UI
 
 ## Introdução
-Pendente...
+Este repositório contém todos os projetos desenvolvidos durante a disciplina **Ferramentas de IA para UX e UI**, abordando desde fundamentos de engenharia de requisitos com IA até implementações avançadas de aplicações full-stack com IA integrada.
+
+Cada módulo foi desenvolvido para demonstrar na prática como as ferramentas de IA transformam o ciclo de desenvolvimento de software, desde o refinamento de requisitos e design de sistemas até automação de testes e integração de lógica de IA em aplicações cliente-servidor. O repositório explora desde o uso de LLMs para engenharia de requisitos até desenvolvimento AI-Native em frontend, orquestração de agentes, automação E2E e integração de IA em arquiteturas full-stack, utilizando TypeScript como linguagem principal.
 
 ## Módulos
 
@@ -154,4 +156,44 @@ nx add/@nx/cypress
 nx run-many -t serve -p api frontend
 npx nx e2e frontend-e2e
 nx open-cypress frontend-e2e
+```
+
+### Módulo 05: Integração de Lógica de IA no Cliente e no Servidor
+
+#### **Projeto:** [Brag Bot](module-05)
+
+**Tecnologias utilizadas:**
+- **Angular 21** - Framework frontend com SSR (Server-Side Rendering)
+- **Tailwind CSS** - Framework de estilização para interfaces modernas
+- **Genkit CLI** - Ferramenta de linha de comando para orquestração de IA
+- **Genkit** - Framework para integração de lógica de IA em aplicações
+- **Google GenAI** - SDK para integração com modelos de IA do Google
+- **TypeScript** - Linguagem tipada para desenvolvimento robusto
+
+**Conceitos abordados:**
+- Integração de lógica de IA no frontend (Angular) e backend (Genkit)
+- Orquestração de fluxos de IA com Genkit CLI
+- Uso de SSR (Server-Side Rendering) para aplicações com IA
+- Integração de modelos de IA com Genkit e Google GenAI
+- Arquitetura full-stack com IA integrada no cliente e servidor
+
+**Aplicação prática:**
+- Desenvolvimento de um chatbot (Brag Bot) com IA integrada no frontend e backend
+- Implementação de SSR para melhor performance e SEO
+- Uso do Genkit para orquestrar fluxos de IA e gerar respostas inteligentes
+- Integração com modelos do Google GenAI para capacidades avançadas de IA
+- Interface moderna com Tailwind CSS e experiência de usuário otimizada
+
+**Comandos executados**:
+```bash
+ng new brag-bot --ssr
+  - Selecionar stylesheet: Tailwind CSS
+  - Selecionar AI tools: Gemini
+npm install -g genkit-cli
+npm install genkit @genkit-ai/google-genai
+
+npm start
+  - Executar http://localhost:4200/
+npm run genkit:ui
+  - Executar http://localhost:4000/
 ```
